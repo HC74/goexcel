@@ -1,0 +1,3 @@
+package goexcel
+
+// goexcel.New() ->
