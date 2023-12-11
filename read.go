@@ -27,8 +27,11 @@ func (r *ReadExcel[T]) Read(v any) error {
 		return fmt.Errorf("v must be a pointer to a slice")
 	}
 	rowsa, _ := r.file.GetRows(r.sheetName)
+	rowLen := len(rowsa)
 	// 减去title
-	rowLen := len(rowsa) - 1
+	if rowLen > 0 {
+		rowLen--
+	}
 	rowsa = nil
 	// 获取切片元素类型
 	sliceElemType := destType.Elem().Elem()
