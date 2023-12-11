@@ -24,7 +24,7 @@ func (r *ReadExcel[T]) SheetName(sheetName string) *ReadExcel[T] {
 func (r *ReadExcel[T]) Read(v any) error {
 	destType := reflect.TypeOf(v)
 	if destType.Kind() != reflect.Ptr || destType.Elem().Kind() != reflect.Slice {
-		return fmt.Errorf("dest must be a pointer to a slice")
+		return fmt.Errorf("v must be a pointer to a slice")
 	}
 	rowsa, _ := r.file.GetRows(r.sheetName)
 	rowLen := len(rowsa)
