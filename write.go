@@ -181,3 +181,7 @@ func (w *WriteExcel[T]) SaveAs(name string) error {
 
 	return nil
 }
+
+func (w *WriteExcel[T]) File() *excelize.File {
+	return w.file
+}
